@@ -10,6 +10,12 @@ usage() {
 	echo
 }
 
+gitSync() {
+	git stash;
+	git checkout master;
+	git checkout -b $1;
+}
+
 
 main() {
 	if [ "$#" -lt 1 ]; then
@@ -27,9 +33,7 @@ main() {
 			;;
 	esac
 
-	git stash;
-	git checkout master;
-	git checkout -b $subcommand;
+	gitSync $subcommand;
 
 }
 
