@@ -13,7 +13,10 @@ usage() {
 gitSync() {
 	git stash;
 	git checkout master;
+	git fetch;
+	git merge;
 	git checkout -b $1;
+	git stash pop;
 }
 
 
