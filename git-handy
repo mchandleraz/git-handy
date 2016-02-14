@@ -12,13 +12,18 @@ usage() {
 
 gitSync() {
 	git stash;
-	git checkout master;
+	DEFAULT_BRANCH=$(findDefaultBranch);
+
+	git checkout $DEFAULT_BRANCH;
 	git fetch;
 	git merge;
 	git checkout -b $1;
 	git stash pop;
 }
 
+findDefaultBranch() {
+	echo `git for-each-ref --sort=-committerdate --format='%(upstream:short)' | head | grep -o '\w*$'`
+}
 
 main() {
 	if [ "$#" -lt 1 ]; then
