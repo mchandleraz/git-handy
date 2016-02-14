@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 version() {
-	echo "csaa.ds git handy v1.0.0";
+	echo "csaa.ds git handy v1.0.1";
 	echo
 }
 
